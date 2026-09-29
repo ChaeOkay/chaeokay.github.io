@@ -19,6 +19,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 							class="speaker-button"
 							data-play-pronunciation
 							aria-label="Play pronunciation of Chae"
+							aria-describedby="pronunciation-transcript"
 						>
 							<svg class="speaker-icon" viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M4 9.5v5h3.5L13 19V5L7.5 9.5H4Z"></path>
@@ -27,7 +28,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 							</svg>
 						</button>
 						<audio data-pronunciation-audio src="/audio/name-pronunciation.m4a" preload="none"></audio>
-						/ Chay /
+						<span id="pronunciation-transcript">/ Chay /</span>
 					</p>
 					<p class="hero-text">
 						product builder with a background in design, software engineering, leadership, and
