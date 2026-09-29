@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+---
+
+<Layout>
+	<a class="skip-link" href="#main-content">Skip to content</a>
+
+	<div class="page">
+		<SiteHeader />
+
+		<main id="main-content">
+			<section class="hero" id="top">
+				<div class="hero-copy">
+					<h1 class="display-title"><span class="hero-greeting">Hi, I'm</span> <span class="hero-name"><span class="hero-name-highlight">Chae</span> O'Keefe</span><span class="hero-comma">,</span></h1>
+					<p class="name-pronunciation">
+						<button
+							type="button"
+							class="speaker-button"
+							data-play-pronunciation
+							aria-label="Play pronunciation of Chae"
+						>
+							<svg class="speaker-icon" viewBox="0 0 24 24" aria-hidden="true">
+								<path d="M4 9.5v5h3.5L13 19V5L7.5 9.5H4Z"></path>
+								<path d="M16.5 8.5a5 5 0 0 1 0 7"></path>
+								<path d="M18.75 6a8.5 8.5 0 0 1 0 12"></path>
+							</svg>
+						</button>
+						<audio data-pronunciation-audio src="/audio/name-pronunciation.m4a" preload="none"></audio>
+						/ Chay /
+					</p>
+					<p class="hero-text">
+						product builder with a background in design, software engineering, leadership, and
+						education. 8+ years discovering solutions to ambiguous problems.
+					</p>
+				</div>
+			</section>
+		</main>
+	</div>
+</Layout>
+
+<script is:inline>
+	(() => {
+		const button = document.querySelector('[data-play-pronunciation]');
+		const audio = document.querySelector('[data-pronunciation-audio]');
+		if (!(button instanceof HTMLButtonElement) || !(audio instanceof HTMLAudioElement)) return;
+
+		button.addEventListener('click', () => {
+			audio.currentTime = 0;
+			audio.play();
+		});
+	})();
+</script>
+
+<style>
+	.page {
+		position: relative;
+		width: min(calc(100% - 3rem), 78rem);
+		margin: 0 auto;
+		padding: 1.25rem 0 5rem;
+	}
+
+	.hero {
+		padding: 7rem 0 6.5rem;
+	}
+
+	.hero-copy {
+		width: 100%;
+		max-width: 100%;
+	}
+
+	.hero-greeting {
+		margin-right: 0.13em;
+		font-weight: 500;
+		color: var(--muted-foreground);
+	}
+
+	.hero-name {
+		font-weight: 800;
+	}
+
+	.hero-name-highlight {
+		padding: 0 0.15em;
+		border-radius: 0.2em;
+		background: var(--selection);
+		color: #171717;
+	}
+
+	.hero-comma {
+		margin-left: 0.04em;
+		color: var(--muted-foreground);
+	}
+
+	.name-pronunciation {
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+		margin: 0.5rem 0 0;
+		font-size: 1rem;
+		font-style: italic;
+		color: var(--muted-foreground);
+	}
+
+	.speaker-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.6rem;
+		height: 1.6rem;
+		flex: 0 0 auto;
+		border: 1px solid var(--control-border);
+		border-radius: 50%;
+		color: var(--foreground);
+		cursor: pointer;
+		transition:
+			background-color 120ms ease,
+			border-color 120ms ease;
+	}
+
+	.speaker-button:hover,
+	.speaker-button:focus-visible {
+		background: var(--muted);
+		border-color: var(--border-strong);
+	}
+
+	.speaker-icon {
+		width: 0.85rem;
+		height: 0.85rem;
+		flex: 0 0 auto;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.8;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.hero-text {
+		font-size: 1.2rem;
+		line-height: 1.55;
+		max-width: 38rem;
+		margin: 1.5rem 0 0;
+	}
+
+	@media (max-width: 720px) {
+		.page {
+			width: min(calc(100% - 1.5rem), 78rem);
+			padding-top: 1rem;
+		}
+
+		.hero {
+			padding: 4rem 0 4.5rem;
+		}
+
+		.hero-text {
+			font-size: 1.05rem;
+		}
+	}
+</style>

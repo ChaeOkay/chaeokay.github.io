@@ -1,0 +1,179 @@
+---
+import { siteConfig } from '../config/site';
+const currentPath = Astro.url.pathname || '/';
+const mobileMenuPanelId = 'shared-mobile-menu-panel';
+---
+
+<header class="shared-header">
+	<a class="shared-brand" href={`mailto:${siteConfig.email}`} aria-label={`Email ${siteConfig.authorName}`}>
+		<span class="shared-brand-mark">{siteConfig.email}</span>
+	</a>
+
+	<div class="shared-header-actions">
+		{siteConfig.navLinks.length > 0 && (
+			<nav class="shared-nav shared-nav-desktop" aria-label="Primary navigation">
+				{siteConfig.navLinks.map((link) => (
+					<a href={link.href} aria-current={link.href === currentPath ? 'page' : undefined}>
+						{link.label}
+					</a>
+				))}
+			</nav>
+		)}
+
+		<button
+			class="shared-theme-toggle"
+			type="button"
+			data-theme-toggle
+			aria-label="Switch to dark mode"
+			aria-pressed="false"
+		>
+			<span class="shared-theme-toggle-icons" aria-hidden="true">
+				<svg
+					class="shared-theme-icon shared-theme-icon-sun"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<circle cx="12" cy="12" r="4.25"></circle>
+					<path d="M12 2.75v2.5"></path>
+					<path d="M12 18.75v2.5"></path>
+					<path d="M21.25 12h-2.5"></path>
+					<path d="M5.25 12h-2.5"></path>
+					<path d="M18.54 5.46l-1.77 1.77"></path>
+					<path d="M7.23 16.77l-1.77 1.77"></path>
+					<path d="M18.54 18.54l-1.77-1.77"></path>
+					<path d="M7.23 7.23L5.46 5.46"></path>
+				</svg>
+				<svg
+					class="shared-theme-icon shared-theme-icon-moon"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<path d="M20.2 14.35A8.75 8.75 0 1 1 9.65 3.8 7 7 0 0 0 20.2 14.35Z"></path>
+				</svg>
+			</span>
+		</button>
+
+		<details class="shared-nav-mobile">
+			<summary
+				class="shared-nav-toggle"
+				aria-label="Toggle navigation menu"
+				aria-expanded="false"
+				aria-controls={mobileMenuPanelId}
+			>
+				<span class="shared-nav-toggle-box" aria-hidden="true">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</summary>
+
+			<nav class="shared-mobile-panel" id={mobileMenuPanelId} aria-label="Mobile navigation">
+				<a class="shared-mobile-brand" href={`mailto:${siteConfig.email}`} aria-label={`Email ${siteConfig.authorName}`}>
+					{siteConfig.email}
+				</a>
+
+				{siteConfig.navLinks.length > 0 && siteConfig.navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+
+				{siteConfig.socialLinks.length > 0 && (
+					<div class="shared-mobile-contact" aria-label="Social links">
+						{
+							siteConfig.socialLinks.map((link) => (
+								<a
+									class="shared-mobile-contact-link"
+									href={link.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={link.label}
+								>
+									<svg viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M8.25 15.75 15.75 8.25"></path>
+										<path d="M9.5 6.75h7.75v7.75"></path>
+										<path d="M6.75 17.25h10.5"></path>
+									</svg>
+								</a>
+							))
+						}
+					</div>
+				)}
+			</nav>
+		</details>
+	</div>
+</header>
+
+<script is:inline>
+	(() => {
+		const mobileMenu = document.querySelector('.shared-nav-mobile');
+		if (!(mobileMenu instanceof HTMLDetailsElement)) return;
+
+		const root = document.documentElement;
+		const toggle = mobileMenu.querySelector('.shared-nav-toggle');
+		const panel = mobileMenu.querySelector('.shared-mobile-panel');
+		const lockClass = 'shared-mobile-menu-open';
+		const focusableSelector = [
+			'a[href]',
+			'button:not([disabled])',
+			'summary',
+			'[tabindex]:not([tabindex="-1"])',
+		].join(',');
+
+		const getFocusableItems = () =>
+			Array.from(mobileMenu.querySelectorAll(focusableSelector)).filter((item) => {
+				if (!(item instanceof HTMLElement)) return false;
+				return !item.hasAttribute('disabled') && item.offsetParent !== null;
+			});
+
+		const closeMobileMenu = () => {
+			mobileMenu.open = false;
+			if (toggle instanceof HTMLElement) {
+				toggle.focus();
+			}
+		};
+
+		const syncScrollLock = () => {
+			root.classList.toggle(lockClass, mobileMenu.open);
+			toggle?.setAttribute('aria-expanded', String(mobileMenu.open));
+		};
+
+		mobileMenu.addEventListener('toggle', syncScrollLock);
+		mobileMenu.addEventListener('keydown', (event) => {
+			if (!mobileMenu.open) return;
+
+			if (event.key === 'Escape') {
+				event.preventDefault();
+				closeMobileMenu();
+				return;
+			}
+
+			if (event.key !== 'Tab') return;
+
+			const focusableItems = getFocusableItems();
+			const firstItem = focusableItems[0];
+			const lastItem = focusableItems[focusableItems.length - 1];
+
+			if (!firstItem || !lastItem) return;
+
+			if (event.shiftKey && document.activeElement === firstItem) {
+				event.preventDefault();
+				lastItem.focus();
+			} else if (!event.shiftKey && document.activeElement === lastItem) {
+				event.preventDefault();
+				firstItem.focus();
+			}
+		});
+		panel?.addEventListener('click', (event) => {
+			if (event.target instanceof Element && event.target.closest('a[href]')) {
+				mobileMenu.open = false;
+			}
+		});
+		window.addEventListener('pagehide', () => root.classList.remove(lockClass));
+		syncScrollLock();
+	})();
+</script>
