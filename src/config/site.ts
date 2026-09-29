@@ -29,7 +29,7 @@ export const siteConfig: SiteConfig = {
 	title: "Chae O'Keefe",
 	description: "Personal site of Chae O'Keefe.",
 	siteUrl: normalizedSiteUrl,
-	email: 'chaeokeefe@gmail.com',
+	email: 'chaeokeefe@icloud.com',
 	locale: 'en-US',
 	authorName: "Chae O'Keefe",
 	authorRole: '',
