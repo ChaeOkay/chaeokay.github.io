@@ -47,7 +47,13 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 				<p class="projects-subnote">Case Studies Coming Soon&hellip;</p>
 				<ul class="project-grid">
 					<li>
-						<article class="project-card project-card-teal">
+						<a
+							class="project-card project-card-teal"
+							href="https://exceptionalstandards.com"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="View the Exceptional Standards case study (opens in a new tab)"
+						>
 							<div class="project-meta">
 								<p class="project-name">Exceptional Standards</p>
 								<time class="project-date" datetime="2026-06">June 2026</time>
@@ -68,11 +74,17 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 								<li>Customer Research</li>
 								<li>Market Analysis</li>
 							</ul>
-						</article>
+						</a>
 					</li>
 
 					<li>
-						<article class="project-card project-card-purple">
+						<a
+							class="project-card project-card-purple"
+							href="https://waverlyclassof2001.com"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="View the Waverly Class of 2001 case study (opens in a new tab)"
+						>
 							<div class="project-meta">
 								<p class="project-name">Waverly Class of 2001</p>
 								<time class="project-date" datetime="2026-07">July 2026</time>
@@ -94,11 +106,17 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 								<li>Adoption</li>
 								<li>Stakeholder Insight</li>
 							</ul>
-						</article>
+						</a>
 					</li>
 
 					<li>
-						<article class="project-card project-card-neutral">
+						<a
+							class="project-card project-card-neutral"
+							href="https://aaved.org"
+							target="_blank"
+							rel="noopener noreferrer"
+							aria-label="View the AAVEd case study (opens in a new tab)"
+						>
 							<div class="project-meta">
 								<p class="project-name">AAVEd</p>
 								<time class="project-date" datetime="2026-08">August 2026</time>
@@ -117,7 +135,7 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 								<li>Survey Design</li>
 								<li>Derisking</li>
 							</ul>
-						</article>
+						</a>
 					</li>
 				</ul>
 			</section>
@@ -264,6 +282,12 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 		padding: 1.5rem;
 		border-radius: 1.35rem;
 		overflow: hidden;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.project-card:focus-visible {
+		outline-color: #171717;
 	}
 
 	.project-card-blue {
@@ -426,6 +450,10 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 	@media (max-width: 720px) {
 		.project-grid {
 			grid-template-columns: 1fr;
+		}
+
+		.project-title {
+			min-height: 0;
 		}
 
 		.page {

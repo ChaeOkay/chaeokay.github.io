@@ -7,19 +7,23 @@ const currentYear = new Date().getFullYear();
 <footer class="shared-footer">
 	<div class="shared-footer-inner shared-footer-inner-no-cta">
 		<div class="shared-footer-meta">
-			<div class="shared-footer-links">
-				{
-					siteConfig.socialLinks.map((link) => (
-						<a href={link.href} target="_blank" rel="noopener noreferrer">
-							{link.label}
-						</a>
-					))
-				}
-			</div>
-			<div class="shared-footer-note">
-				<div class="shared-footer-legal">
-					{siteConfig.legalLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+			{siteConfig.socialLinks.length > 0 && (
+				<div class="shared-footer-links">
+					{
+						siteConfig.socialLinks.map((link) => (
+							<a href={link.href} target="_blank" rel="noopener noreferrer">
+								{link.label}
+							</a>
+						))
+					}
 				</div>
+			)}
+			<div class="shared-footer-note">
+				{siteConfig.legalLinks.length > 0 && (
+					<div class="shared-footer-legal">
+						{siteConfig.legalLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+					</div>
+				)}
 				<p>&copy; {currentYear} {siteConfig.name}</p>
 			</div>
 		</div>
