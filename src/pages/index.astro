@@ -52,13 +52,12 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 							href="https://exceptionalstandards.com"
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label="View the Exceptional Standards case study (opens in a new tab)"
 						>
 							<div class="project-meta">
 								<p class="project-name">Exceptional Standards</p>
 								<time class="project-date" datetime="2026-06">June 2026</time>
 							</div>
-							<h2 class="project-title">The problem was visible. The product opportunity wasn&rsquo;t.</h2>
+							<h2 class="project-title"><span class="sr-only">Exceptional Standards: </span>The problem was visible. The product opportunity wasn&rsquo;t.</h2>
 							<div class="project-visual">
 								<Image
 									class="project-image"
@@ -74,6 +73,7 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 								<li>Customer Research</li>
 								<li>Market Analysis</li>
 							</ul>
+							<span class="sr-only">View case study (opens in a new tab)</span>
 						</a>
 					</li>
 
@@ -83,13 +83,12 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 							href="https://waverlyclassof2001.com"
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label="View the Waverly Class of 2001 case study (opens in a new tab)"
 						>
 							<div class="project-meta">
 								<p class="project-name">Waverly Class of 2001</p>
 								<time class="project-date" datetime="2026-07">July 2026</time>
 							</div>
-							<h2 class="project-title">Redefining the High School Reunion Experience.</h2>
+							<h2 class="project-title"><span class="sr-only">Waverly Class of 2001: </span>Redefining the High School Reunion Experience.</h2>
 							<p class="project-stat">85+ attendees &middot; moving participation 10% to 35%</p>
 							<div class="project-visual">
 								<Image
@@ -106,6 +105,7 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 								<li>Adoption</li>
 								<li>Stakeholder Insight</li>
 							</ul>
+							<span class="sr-only">View case study (opens in a new tab)</span>
 						</a>
 					</li>
 
@@ -115,13 +115,12 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 							href="https://aaved.org"
 							target="_blank"
 							rel="noopener noreferrer"
-							aria-label="View the AAVEd case study (opens in a new tab)"
 						>
 							<div class="project-meta">
 								<p class="project-name">AAVEd</p>
 								<time class="project-date" datetime="2026-08">August 2026</time>
 							</div>
-							<h2 class="project-title">Moving from passive agreement to repeatable participation.</h2>
+							<h2 class="project-title"><span class="sr-only">AAVEd: </span>Moving from passive agreement to repeatable participation.</h2>
 							<div class="project-visual project-visual-compact">
 								<Image
 									class="project-image project-image-contain"
@@ -135,6 +134,7 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 								<li>Survey Design</li>
 								<li>Derisking</li>
 							</ul>
+							<span class="sr-only">View case study (opens in a new tab)</span>
 						</a>
 					</li>
 				</ul>
@@ -172,6 +172,18 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 </script>
 
 <style>
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
 	.page {
 		position: relative;
 		width: min(calc(100% - 6rem), 78rem);
