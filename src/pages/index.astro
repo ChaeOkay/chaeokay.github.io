@@ -142,16 +142,13 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 
 			<section class="contact-cta" aria-label="Contact">
 				<h2 class="contact-title">What can I build for you?</h2>
-				<a
-					class="contact-email"
-					href={`mailto:${siteConfig.email}`}
-					aria-label={`Email ${siteConfig.authorName} (opens your email app)`}
-				>
+				<a class="contact-email" href={`mailto:${siteConfig.email}`}>
 					<svg class="contact-email-icon" viewBox="0 0 24 24" aria-hidden="true">
 						<path d="M4.75 6.75h14.5v10.5H4.75z"></path>
 						<path d="m5.25 7.25 6.75 5.5 6.75-5.5"></path>
 					</svg>
 					<span>{siteConfig.email}</span>
+					<span class="sr-only"> (opens your email app)</span>
 				</a>
 			</section>
 		</main>
