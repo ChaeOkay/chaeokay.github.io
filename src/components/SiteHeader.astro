@@ -5,8 +5,12 @@ const mobileMenuPanelId = 'shared-mobile-menu-panel';
 ---
 
 <header class="shared-header">
-	<a class="shared-brand" href={`mailto:${siteConfig.email}`} aria-label={`Email ${siteConfig.email}`}>
-		<span class="shared-brand-mark">{siteConfig.email}</span>
+	<a class="shared-brand" href={`mailto:${siteConfig.email}`} aria-label={`Email ${siteConfig.authorName} (opens your email app)`}>
+		<svg class="brand-mail-icon" viewBox="0 0 24 24" aria-hidden="true">
+			<path d="M4.75 6.75h14.5v10.5H4.75z"></path>
+			<path d="m5.25 7.25 6.75 5.5 6.75-5.5"></path>
+		</svg>
+		<span class="shared-brand-mark">{siteConfig.authorName}</span>
 	</a>
 
 	<div class="shared-header-actions">
@@ -76,8 +80,12 @@ const mobileMenuPanelId = 'shared-mobile-menu-panel';
 			</summary>
 
 			<nav class="shared-mobile-panel" id={mobileMenuPanelId} aria-label="Mobile navigation">
-				<a class="shared-mobile-brand" href={`mailto:${siteConfig.email}`} aria-label={`Email ${siteConfig.email}`}>
-					{siteConfig.email}
+				<a class="shared-mobile-brand" href={`mailto:${siteConfig.email}`} aria-label={`Email ${siteConfig.authorName} (opens your email app)`}>
+					<svg class="brand-mail-icon" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M4.75 6.75h14.5v10.5H4.75z"></path>
+						<path d="m5.25 7.25 6.75 5.5 6.75-5.5"></path>
+					</svg>
+					{siteConfig.authorName}
 				</a>
 
 				{siteConfig.navLinks.length > 0 && siteConfig.navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
