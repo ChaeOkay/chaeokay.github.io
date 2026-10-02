@@ -2,8 +2,10 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import { siteConfig } from '../config/site';
 import exceptionalStandardsScreenshot from '../assets/projects/exceptional-standards.png';
 import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-2001.png';
+import aavedLogo from '../assets/projects/aaved-logo.png';
 ---
 
 <Layout>
@@ -41,15 +43,16 @@ import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-20
 			</section>
 
 			<section class="projects" aria-label="Projects">
-				<p class="projects-note">Coming Soon&hellip;</p>
+				<p class="projects-note">3 Projects<span class="projects-note-spacer"> in </span>3 Months</p>
+				<p class="projects-subnote">Case Studies Coming Soon&hellip;</p>
 				<ul class="project-grid">
 					<li>
-						<article class="project-card project-card-blue">
+						<article class="project-card project-card-teal">
 							<div class="project-meta">
 								<p class="project-name">Exceptional Standards</p>
 								<time class="project-date" datetime="2026-06">June 2026</time>
 							</div>
-							<h2 class="project-title">The classroom problem was visible. The product opportunity wasn&rsquo;t.</h2>
+							<h2 class="project-title">The problem was visible. The product opportunity wasn&rsquo;t.</h2>
 							<div class="project-visual">
 								<Image
 									class="project-image"
@@ -74,8 +77,8 @@ import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-20
 								<p class="project-name">Waverly Class of 2001</p>
 								<time class="project-date" datetime="2026-07">July 2026</time>
 							</div>
-							<h2 class="project-title">People wanted a reunion. So why weren&rsquo;t they committing?</h2>
-							<p class="project-stat">~85 attendees &middot; 3.4&times; the turnout of the 10-year reunion</p>
+							<h2 class="project-title">Redefining the High School Reunion Experience.</h2>
+							<p class="project-stat">85+ attendees &middot; moving participation 10% to 35%</p>
 							<div class="project-visual">
 								<Image
 									class="project-image"
@@ -93,7 +96,45 @@ import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-20
 							</ul>
 						</article>
 					</li>
+
+					<li>
+						<article class="project-card project-card-neutral">
+							<div class="project-meta">
+								<p class="project-name">AAVEd</p>
+								<time class="project-date" datetime="2026-08">August 2026</time>
+							</div>
+							<h2 class="project-title">Moving from passive agreement to repeatable participation.</h2>
+							<div class="project-visual project-visual-compact">
+								<Image
+									class="project-image project-image-contain"
+									src={aavedLogo}
+									alt="AAVEd (Asian American Voices for Education) logo"
+									width={768}
+									height={261}
+								/>
+							</div>
+							<ul class="project-tags" aria-label="Project tags">
+								<li>Survey Design</li>
+								<li>Derisking</li>
+							</ul>
+						</article>
+					</li>
 				</ul>
+			</section>
+
+			<section class="contact-cta" aria-label="Contact">
+				<h2 class="contact-title">What can I build for you?</h2>
+				<a
+					class="contact-email"
+					href={`mailto:${siteConfig.email}`}
+					aria-label={`Email ${siteConfig.authorName} (opens your email app)`}
+				>
+					<svg class="contact-email-icon" viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M4.75 6.75h14.5v10.5H4.75z"></path>
+						<path d="m5.25 7.25 6.75 5.5 6.75-5.5"></path>
+					</svg>
+					<span>{siteConfig.email}</span>
+				</a>
 			</section>
 		</main>
 	</div>
@@ -117,7 +158,7 @@ import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-20
 		position: relative;
 		width: min(calc(100% - 6rem), 78rem);
 		margin: 0 auto;
-		padding: 1.25rem 0 5rem;
+		padding: 1.25rem 0 1.5rem;
 	}
 
 	.hero {
@@ -188,11 +229,22 @@ import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-20
 	}
 
 	.projects-note {
-		margin: 0 0 1.5rem;
+		margin: 0;
 		font-size: 1.5rem;
 		font-weight: 700;
 		letter-spacing: -0.02em;
 		color: var(--foreground);
+	}
+
+	.projects-note-spacer {
+		margin: 0 0.12em;
+	}
+
+	.projects-subnote {
+		margin: 0.35rem 0 1.5rem;
+		font-size: 1rem;
+		font-weight: 500;
+		color: var(--muted-foreground);
 	}
 
 	.project-grid {
@@ -220,6 +272,14 @@ import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-20
 
 	.project-card-purple {
 		background: var(--project-accent-purple);
+	}
+
+	.project-card-teal {
+		background: var(--project-accent-teal);
+	}
+
+	.project-card-neutral {
+		background: var(--project-accent-neutral);
 	}
 
 	.project-name {
@@ -271,6 +331,7 @@ import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-20
 	.project-title {
 		margin: 0;
 		max-width: none;
+		min-height: 2.32em;
 		font-size: clamp(1.45rem, 1.9vw, 1.9rem);
 		font-weight: 800;
 		line-height: 1.16;
@@ -303,6 +364,63 @@ import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-20
 		object-position: top;
 		border-radius: 1rem;
 		box-shadow: var(--shadow-medium);
+	}
+
+	.project-image-contain {
+		object-fit: contain;
+		object-position: center;
+		padding: 2rem;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	.project-visual-compact {
+		flex: 0 0 auto;
+		min-height: 6rem;
+	}
+
+	.project-visual-compact .project-image-contain {
+		max-width: 55%;
+		margin: 0 auto;
+		padding: 0.5rem;
+	}
+
+	.contact-cta {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 4rem 0 0;
+		text-align: left;
+	}
+
+	.contact-title {
+		margin: 0;
+		font-size: 1.5rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		color: var(--foreground);
+	}
+
+
+	.contact-email {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-top: 0.35rem;
+		font-size: 1rem;
+		font-weight: 500;
+		color: var(--muted-foreground);
+	}
+
+	.contact-email-icon {
+		width: 1.1rem;
+		height: 1.1rem;
+		flex: 0 0 auto;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.8;
+		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 
 	@media (max-width: 720px) {
