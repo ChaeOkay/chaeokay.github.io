@@ -1,0 +1,79 @@
+---
+type Props = {
+	label: string;
+	steps: string[];
+};
+
+const { label, steps } = Astro.props;
+
+const startColor = { r: 0xbf, g: 0xe6, b: 0xe0 };
+const endColor = { r: 0xdc, g: 0xff, b: 0x68 };
+const lerp = (a: number, b: number, t: number) => Math.round(a + (b - a) * t);
+const stepColor = (index: number) => {
+	const t = steps.length > 1 ? index / (steps.length - 1) : 0;
+	const r = lerp(startColor.r, endColor.r, t);
+	const g = lerp(startColor.g, endColor.g, t);
+	const b = lerp(startColor.b, endColor.b, t);
+	return `rgb(${r}, ${g}, ${b})`;
+};
+---
+
+<div class="case-flow-card">
+	<ol class="case-flow" role="list" aria-label={label}>
+		{
+			steps.map((step, index) => (
+				<li class="case-flow-item">
+					<span class="case-flow-number" style={`background: ${stepColor(index)}`} aria-hidden="true">
+						{index + 1}
+					</span>
+					<span class="case-flow-text">{step}</span>
+				</li>
+			))
+		}
+	</ol>
+</div>
+
+<style>
+	.case-flow-card {
+		margin: 1.5rem 0;
+		padding: 1.5rem 1.75rem;
+		border-radius: 1rem;
+		background: var(--project-accent-neutral);
+		color: #171717;
+	}
+
+	.case-flow {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.65rem;
+	}
+
+	.case-flow-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+
+	.case-flow-number {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 auto;
+		width: 1.65rem;
+		height: 1.65rem;
+		border-radius: 50%;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		color: #171717;
+	}
+
+	.case-flow-text {
+		margin-top: 0.15rem;
+		font-size: 0.98rem;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+</style>

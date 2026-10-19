@@ -1,0 +1,82 @@
+---
+export type StakeholderAccent = 'teal' | 'purple' | 'blue' | 'lime';
+
+export type StakeholderItem = {
+	role: string;
+	stakeholder: string;
+	accent: StakeholderAccent;
+};
+
+type Props = {
+	label: string;
+	items: StakeholderItem[];
+};
+
+const { label, items } = Astro.props;
+---
+
+<dl class="case-stakeholders" aria-label={label}>
+	{
+		items.map((item) => (
+			<div class={`case-stakeholders-item case-stakeholders-item-${item.accent}`}>
+				<dt class="case-stakeholders-role">{item.role}</dt>
+				<dd class="case-stakeholders-value">{item.stakeholder}</dd>
+			</div>
+		))
+	}
+</dl>
+
+<style>
+	.case-stakeholders {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin: 1.5rem 0;
+		padding: 0;
+	}
+
+	.case-stakeholders-item {
+		padding: 1.25rem;
+		border-radius: 1rem;
+		color: #171717;
+	}
+
+	.case-stakeholders-item-teal {
+		background: var(--project-accent-teal);
+	}
+
+	.case-stakeholders-item-purple {
+		background: var(--project-accent-purple);
+	}
+
+	.case-stakeholders-item-blue {
+		background: var(--project-accent-blue);
+	}
+
+	.case-stakeholders-item-lime {
+		background: var(--selection);
+	}
+
+	.case-stakeholders-role {
+		margin: 0 0 0.6rem;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(23, 23, 23, 0.72);
+	}
+
+	.case-stakeholders-value {
+		margin: 0;
+		font-size: 1.05rem;
+		font-weight: 700;
+		line-height: 1.35;
+	}
+
+	@media (max-width: 720px) {
+		.case-stakeholders {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

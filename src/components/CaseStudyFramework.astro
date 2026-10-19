@@ -1,0 +1,108 @@
+---
+export type FrameworkAccent = 'teal' | 'purple' | 'blue';
+
+export type FrameworkItem = {
+	label: string;
+	accent: FrameworkAccent;
+	paragraph?: string;
+	list?: string[];
+};
+
+type Props = {
+	label: string;
+	items: FrameworkItem[];
+};
+
+const { label, items } = Astro.props;
+---
+
+<ul class="case-framework" role="list" aria-label={label}>
+	{
+		items.map((item) => (
+			<li class={`case-framework-item case-framework-item-${item.accent}`}>
+				<p class="case-framework-label">{item.label}</p>
+				{item.paragraph && <p class="case-framework-paragraph">{item.paragraph}</p>}
+				{item.list && (
+					<ul class="case-framework-list" role="list">
+						{item.list.map((entry) => (
+							<li>{entry}</li>
+						))}
+					</ul>
+				)}
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.case-framework {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.25rem;
+		margin: 1.5rem 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.case-framework-item {
+		padding: 1.5rem;
+		border-radius: 1rem;
+		color: #171717;
+	}
+
+	.case-framework-item-teal {
+		background: var(--project-accent-teal);
+	}
+
+	.case-framework-item-purple {
+		background: var(--project-accent-purple);
+	}
+
+	.case-framework-item-blue {
+		background: var(--project-accent-blue);
+	}
+
+	.case-framework-label {
+		margin: 0 0 0.6rem;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(23, 23, 23, 0.72);
+	}
+
+	.case-framework-paragraph {
+		margin: 0;
+		font-size: 0.98rem;
+		font-weight: 600;
+		line-height: 1.5;
+	}
+
+	.case-framework-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.5rem;
+		font-size: 0.98rem;
+		font-weight: 600;
+		line-height: 1.4;
+	}
+
+	.case-framework-list li {
+		padding-left: 1.1rem;
+		position: relative;
+	}
+
+	.case-framework-list li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.55em;
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 50%;
+		background: currentColor;
+	}
+</style>

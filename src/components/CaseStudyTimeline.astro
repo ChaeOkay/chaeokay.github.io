@@ -1,0 +1,264 @@
+---
+export type TimelineIcon = 'document' | 'chat' | 'wireframe' | 'cursor';
+export type TimelineAccent = 'teal' | 'purple' | 'blue' | 'lime';
+
+export type TimelineItem = string | { label: string; url: string };
+
+export type TimelineMilestone = {
+	month: string;
+	date: string;
+	accent: TimelineAccent;
+	icon: TimelineIcon;
+	items: TimelineItem[];
+};
+
+type Props = {
+	label: string;
+	milestones: TimelineMilestone[];
+};
+
+const { label, milestones } = Astro.props;
+---
+
+<div class="case-timeline" style={`--case-timeline-columns: ${milestones.length}`}>
+	<div class="case-timeline-track" aria-hidden="true">
+		{
+			milestones.map((milestone, index) => (
+				<div class="case-timeline-col">
+					<time class="case-timeline-month-label" datetime={milestone.date}>
+						{milestone.month}
+					</time>
+					<div class="case-timeline-rail">
+						<span class="case-timeline-dot" />
+					</div>
+					<span class="case-timeline-stem" />
+				</div>
+			))
+		}
+	</div>
+
+	<ol class="case-timeline-cards" role="list" aria-label={label}>
+		{
+			milestones.map((milestone) => (
+				<li class={`case-timeline-card case-timeline-card-${milestone.accent}`}>
+					<span class="sr-only">{milestone.month}: </span>
+					<p class="case-timeline-card-month" aria-hidden="true">
+						{milestone.month}
+					</p>
+					{milestone.icon === 'document' && (
+						<svg class="case-timeline-icon" viewBox="2.2 0 24 24" aria-hidden="true">
+							<path d="M3 3.75h7l3 3v13.5H3z" />
+							<path d="M5.5 11.5h5" />
+							<path d="M5.5 14.5h5" />
+							<path d="M5.5 17.5h3" />
+						</svg>
+					)}
+					{milestone.icon === 'chat' && (
+						<svg class="case-timeline-icon" viewBox="2.2 0 24 24" aria-hidden="true">
+							<path d="M3 6.75h10.5v7H7.25l-3 3v-3H3z" />
+							<path d="M9.5 9.75h8v7h-2.5v2.5l-2.5-2.5h-3z" />
+						</svg>
+					)}
+					{milestone.icon === 'wireframe' && (
+						<svg class="case-timeline-icon" viewBox="2.2 0 24 24" aria-hidden="true">
+							<rect x="3" y="5.75" width="14.5" height="12.5" rx="1" />
+							<path d="M3 9.25h14.5" />
+							<circle cx="5.25" cy="7.5" r="0.4" fill="currentColor" stroke="none" />
+							<circle cx="7" cy="7.5" r="0.4" fill="currentColor" stroke="none" />
+							<circle cx="8.75" cy="7.5" r="0.4" fill="currentColor" stroke="none" />
+							<rect x="5.25" y="11" width="4.5" height="3.5" />
+							<path d="M11.25 11.5h4" />
+							<path d="M11.25 13.25h4" />
+						</svg>
+					)}
+					{milestone.icon === 'cursor' && (
+						<svg class="case-timeline-icon" viewBox="2.2 0 24 24" aria-hidden="true">
+							<path d="m6.2 8 1.2 9.5 1.8-2.6 1.6 2.9 1.5-.8-1.6-2.9 3-.6Z" />
+							<path d="M6.2 4.5v1.2" />
+							<path d="M10.4 5 9.7 6" />
+							<path d="M3 7.5l1 .7" />
+						</svg>
+					)}
+					<ul class="case-timeline-items" role="list">
+						{milestone.items.map((item) =>
+							typeof item === 'string' ? (
+								<li>{item}</li>
+							) : (
+								<li>
+									<a href={item.url} target="_blank" rel="noopener noreferrer">
+										{item.label}
+										<span class="sr-only"> (opens in a new tab)</span>
+									</a>
+								</li>
+							),
+						)}
+					</ul>
+				</li>
+			))
+		}
+	</ol>
+</div>
+
+<style>
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.case-timeline {
+		margin: 1.5rem 0;
+	}
+
+	.case-timeline-track {
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	.case-timeline-col {
+		flex: 1 1 0;
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.case-timeline-month-label {
+		font-size: 1.1rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		color: var(--foreground);
+		margin-bottom: 0.65rem;
+	}
+
+	.case-timeline-rail {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		height: 0.7rem;
+	}
+
+	.case-timeline-col:not(:last-child) .case-timeline-rail::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: calc(100% + 1.5rem);
+		height: 2px;
+		background: var(--border-strong);
+		transform: translateY(-50%);
+	}
+
+	.case-timeline-dot {
+		position: relative;
+		width: 0.65rem;
+		height: 0.65rem;
+		border-radius: 50%;
+		background: var(--border-strong);
+	}
+
+	.case-timeline-stem {
+		width: 2px;
+		height: 1.5rem;
+		margin-top: 0.1rem;
+		background: var(--border-strong);
+	}
+
+	.case-timeline .case-timeline-cards {
+		display: grid;
+		grid-template-columns: repeat(var(--case-timeline-columns, 4), minmax(0, 1fr));
+		gap: 1.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.case-timeline-card {
+		display: flex;
+		flex-direction: column;
+		gap: 1.1rem;
+		padding: 1.5rem 1.5rem 1rem;
+		border-radius: 1.1rem;
+		color: #171717;
+		box-shadow: var(--shadow-soft);
+	}
+
+	.case-timeline-card-teal {
+		background: var(--project-accent-teal);
+	}
+
+	.case-timeline-card-purple {
+		background: var(--project-accent-purple);
+	}
+
+	.case-timeline-card-blue {
+		background: var(--project-accent-blue);
+	}
+
+	.case-timeline-card-lime {
+		background: var(--selection);
+	}
+
+	.case-timeline-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		flex: 0 0 auto;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.6;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
+
+	.case-timeline .case-timeline-items {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 0.625rem;
+		font-size: 0.9rem;
+		font-weight: 700;
+		line-height: 1.25;
+	}
+
+	.case-timeline-items li {
+		margin: 0;
+		padding: 0;
+	}
+
+	.case-timeline-items a {
+		color: inherit;
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
+
+	.case-timeline-card-month {
+		display: none;
+		margin: 0;
+		font-size: 1.1rem;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+
+	@media (max-width: 720px) {
+		.case-timeline-track {
+			display: none;
+		}
+
+		.case-timeline-cards {
+			grid-template-columns: 1fr;
+		}
+
+		.case-timeline-card-month {
+			display: block;
+		}
+	}
+</style>

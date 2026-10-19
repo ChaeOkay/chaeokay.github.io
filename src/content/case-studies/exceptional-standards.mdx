@@ -1,0 +1,171 @@
+---
+title: "Exceptional Standards"
+dek: "The problem was visible. The product opportunity wasn't."
+description: "How user discovery with special education teachers surfaced the unsaid ask behind IEP progress monitoring: student engagement, not just time savings."
+publishDate: 2026-06-01
+accent: teal
+tags:
+  - 0-1 Product
+  - Strategy
+  - Customer Research
+  - Adaptation
+  - Innovation
+externalUrl: "https://exceptionalstandards.com"
+---
+
+import CaseStudyTimeline from '../../components/CaseStudyTimeline.astro';
+import CaseStudyFramework from '../../components/CaseStudyFramework.astro';
+import CaseStudyFlow from '../../components/CaseStudyFlow.astro';
+import CaseStudyStakeholders from '../../components/CaseStudyStakeholders.astro';
+
+I started <a href="https://exceptionalstandards.com" target="_blank" rel="noopener noreferrer">Exceptional Standards<span class="sr-only"> (opens in a new tab)</span></a> believing teachers needed a faster way to differentiate academic materials. User discovery revealed an opportunity I hadn't anticipated.
+
+After many years in tech, I became a special education paraprofessional at my children's elementary school. I worked with students in grades 4 and 5 with reading levels more commonly found in grades K&ndash;3. Those students were totally capable of learning 4th- and 5th-grade concepts, but in key moments, the grade-level language became a huge hindrance to demonstrating knowledge.
+
+My <mark>initial hypothesis</mark> was that teachers needed a more reliable way to differentiate the language of materials without changing the academic standard.
+
+With my engineering background, I initially set out to build a trusted tool that could keep the academic skill intact while independently changing the reading level — something Gemini and ChatGPT struggled to do well.
+
+As soon as the school year ended, I set up <mark>user discovery</mark> interviews with special education teachers, with a goal of validating and scoping an MVP I hoped to ship by the end of summer. Interviews started with open-ended questions about workflow and pain points, and ended with a prototype built in Figma Make.
+
+Gemini analysis of the interview notes confirmed the time-saving value proposition. What surprised me were the feature requests that ultimately improved the student experience — not necessarily the teacher's.
+
+Teachers validated the need to reduce preparation time. But they also repeatedly requested features that wouldn't necessarily save them time — features designed to make the materials more engaging and accessible to students, like topics of interest and rewards for engagement instead of performance. What did this mean?
+
+Perplexity and Google Scholar led me to well-established research on the impact of student experience on teacher burnout and attrition.<sup id="citation-1-ref"><a href="#citation-1" aria-label="Citation 1">1</a></sup><sup id="citation-2-ref"><a href="#citation-2" aria-label="Citation 2">2</a></sup><sup id="citation-3-ref"><a href="#citation-3" aria-label="Citation 3">3</a></sup><sup id="citation-4-ref"><a href="#citation-4" aria-label="Citation 4">4</a></sup><sup id="citation-5-ref"><a href="#citation-5" aria-label="Citation 5">5</a></sup> This led me to a <mark>different hypothesis</mark>: perhaps teachers weren't simply looking to reduce preparation time. Teachers wanted students to engage more *meaningfully* with materials they created.
+
+Exceptional Standards now has the ambitious goal of bringing joy to IEP weekly progress monitoring — something no one else in the marketplace is specifically trying to do.
+
+Because the product serves elementary students, privacy became an early product constraint rather than a consideration for later. I designed the student experience to minimize the collection and retention of identifiable information.
+
+A prototype, followed by an MVP, was scoped, chunked into Linear projects, developed iteratively around continuous user feedback, and shipped in September for beta testing.
+
+The September beta is an opportunity to test whether improving the student experience creates enough value for teachers to adopt Exceptional Standards consistently.
+
+<mark>The next questions</mark> are about activation, retention, and willingness to pay. Can teachers experience value quickly enough to return? Will improvements in the student experience influence continued use? And will teachers value the product enough to pay for it — or advocate for their schools to purchase it? Check back and see.
+
+## Product
+
+<CaseStudyFramework
+	label="Strategy, goal, and tactic"
+	items={[
+		{
+			label: 'Strategy',
+			accent: 'blue',
+			paragraph:
+				"Adapt standards-aligned resources that are relevant to student life. For many exceptional students, access points depend not only on reading level and scaffolding, but also on whether the material connects to the student's interests, background knowledge, and real life.",
+		},
+		{
+			label: 'Goal',
+			accent: 'teal',
+			list: [
+				'Exceptional education teachers can quickly individualize progress monitoring for students.',
+				'Exceptional students positively integrate progress monitoring into their weekly routine.',
+			],
+		},
+		{
+			label: 'Tactic',
+			accent: 'purple',
+			paragraph: 'Launch a web app that saves teachers time and rewards students for engagement.',
+		},
+	]}
+/>
+
+## Timeline
+
+<CaseStudyTimeline
+	label="Exceptional Standards project timeline, May through September 2026"
+	milestones={[
+		{
+			month: 'May',
+			date: '2026-05',
+			accent: 'teal',
+			icon: 'document',
+			items: [
+				{
+					label: 'Research Brief',
+					url: 'https://app.notion.com/p/Research-Brief-3febf6a7c35680e7bb73de645d2461a6?source=copy_link',
+				},
+			],
+		},
+		{
+			month: 'June',
+			date: '2026-06',
+			accent: 'purple',
+			icon: 'chat',
+			items: [
+				'User Interviews',
+				{
+					label: 'Product Brief',
+					url: 'https://app.notion.com/p/Product-Brief-Exceptional-Standards-3febf6a7c35680749f58f23bfb202842?source=copy_link',
+				},
+			],
+		},
+		{
+			month: 'August',
+			date: '2026-08',
+			accent: 'blue',
+			icon: 'wireframe',
+			items: [
+				{
+					label: 'Prototype',
+					url: 'https://app.notion.com/p/PDR-Prototype-3febf6a7c35680468d17f84074ddab0e?source=copy_link',
+				},
+				'User Interviews',
+			],
+		},
+		{
+			month: 'September',
+			date: '2026-09',
+			accent: 'lime',
+			icon: 'cursor',
+			items: [
+				{
+					label: 'MVP',
+					url: 'https://app.notion.com/p/PDR-MVP-3febf6a7c35680fba950f87debe720ee?source=copy_link',
+				},
+				'Beta Testing',
+			],
+		},
+	]}
+/>
+
+## Default assessment flow
+
+<CaseStudyFlow
+	label="Default assessment flow, ten steps"
+	steps={[
+		'Teacher inputs student topic of interest.',
+		'Teacher generates worksheet.',
+		'Teacher publishes and approves worksheet or assessment.',
+		'Exceptional Standards generates unique assessment links.',
+		'Teacher distributes links through a school-approved channel.',
+		'Student opens the assigned link and selects an icon.',
+		'Student completes and submits the assessment.',
+		'Teacher views results by icon, link, status, score, and related metadata.',
+		'Teacher prints graded results for filing.',
+		'Records retained for 90 day reporting window.',
+	]}
+/>
+
+## Stakeholders
+
+<CaseStudyStakeholders
+	label="Roles and stakeholders"
+	items={[
+		{ role: 'Primary user', stakeholder: 'Special education teacher', accent: 'teal' },
+		{ role: 'Beneficiary / secondary user', stakeholder: 'Student', accent: 'purple' },
+		{ role: 'Potential buyer', stakeholder: 'Teacher, school, or district', accent: 'blue' },
+		{ role: 'Potential advocate', stakeholder: 'Teacher', accent: 'lime' },
+	]}
+/>
+
+## Citations
+
+<ol class="case-study-citations">
+<li id="citation-1"><strong>Reducing Teacher Burnout by Increasing Student Engagement: A Children's Rights Approach.</strong> Covell, K., McNeil, J. K., &amp; Howe, R. B. (2009). <em>School Psychology International</em>, 30(3), 282&ndash;290. <a href="https://eric.ed.gov/?id=EJ843546" target="_blank" rel="noopener noreferrer">eric.ed.gov<span class="sr-only"> (opens in a new tab)</span></a>. <a href="#citation-1-ref" aria-label="Back to reference 1 in the text">↩</a></li>
+<li id="citation-2"><strong>How Strongly Is Teachers' Burnout Related to Work-Related Correlates? A Meta-Analysis.</strong> (2026). <em>Review of Educational Research</em>. <a href="https://journals.sagepub.com/doi/full/10.3102/00346543261455273" target="_blank" rel="noopener noreferrer">journals.sagepub.com<span class="sr-only"> (opens in a new tab)</span></a>. <a href="#citation-2-ref" aria-label="Back to reference 2 in the text">↩</a></li>
+<li id="citation-3"><strong>Towards an Understanding of Teacher Attrition: A Meta-Analysis of Burnout, Job Satisfaction, and Teachers' Intentions to Quit.</strong> Madigan, D. J., &amp; Kim, L. E. (2021). <em>Teaching and Teacher Education</em>. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0742051X21001499" target="_blank" rel="noopener noreferrer">sciencedirect.com<span class="sr-only"> (opens in a new tab)</span></a>. <a href="#citation-3-ref" aria-label="Back to reference 3 in the text">↩</a></li>
+<li id="citation-4"><strong>A Meta-Analysis of Special Education Teachers' Burnout.</strong> Park, E. Y., &amp; Shin, M. (2020). <em>SAGE Open</em>. <a href="https://journals.sagepub.com/doi/full/10.1177/2158244020918297" target="_blank" rel="noopener noreferrer">journals.sagepub.com<span class="sr-only"> (opens in a new tab)</span></a>. <a href="#citation-4-ref" aria-label="Back to reference 4 in the text">↩</a></li>
+<li id="citation-5"><strong>Emotional Labor and Burnout among Teachers: A Systematic Review.</strong> (2021). <em>International Journal of Environmental Research and Public Health</em>. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8657663/" target="_blank" rel="noopener noreferrer">pmc.ncbi.nlm.nih.gov<span class="sr-only"> (opens in a new tab)</span></a>. <a href="#citation-5-ref" aria-label="Back to reference 5 in the text">↩</a></li>
+</ol>
