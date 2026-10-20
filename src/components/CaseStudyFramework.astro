@@ -5,6 +5,7 @@ export type FrameworkItem = {
 	label: string;
 	accent: FrameworkAccent;
 	paragraph?: string;
+	paragraphSecondary?: string;
 	list?: string[];
 };
 
@@ -21,7 +22,14 @@ const { label, items } = Astro.props;
 		items.map((item) => (
 			<li class={`case-framework-item case-framework-item-${item.accent}`}>
 				<p class="case-framework-label">{item.label}</p>
-				{item.paragraph && <p class="case-framework-paragraph">{item.paragraph}</p>}
+				{item.paragraph && (
+					<p class="case-framework-paragraph">
+						{item.paragraph}
+						{item.paragraphSecondary && (
+							<span class="case-framework-paragraph-secondary"> {item.paragraphSecondary}</span>
+						)}
+					</p>
+				)}
 				{item.list && (
 					<ul class="case-framework-list" role="list">
 						{item.list.map((entry) => (
@@ -77,6 +85,10 @@ const { label, items } = Astro.props;
 		font-size: 0.98rem;
 		font-weight: 600;
 		line-height: 1.5;
+	}
+
+	.case-framework-paragraph-secondary {
+		font-weight: 400;
 	}
 
 	.case-framework-list {
