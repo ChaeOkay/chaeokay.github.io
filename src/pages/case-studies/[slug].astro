@@ -95,7 +95,7 @@ const schema = [
 					<p class="case-study-dek">{dek}</p>
 					<div class="case-study-meta">
 						<time datetime={publishDateIso.slice(0, 7)}>
-							{publishDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+							{publishDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' })}
 						</time>
 					</div>
 					{tags.length > 0 && (
