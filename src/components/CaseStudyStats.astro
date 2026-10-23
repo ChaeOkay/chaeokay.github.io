@@ -1,0 +1,81 @@
+---
+export type StatAccent = 'teal' | 'purple' | 'blue' | 'lime';
+
+export type StatItem = {
+	value: string;
+	label: string;
+	accent: StatAccent;
+};
+
+type Props = {
+	label: string;
+	items: StatItem[];
+};
+
+const { label, items } = Astro.props;
+---
+
+<dl class="case-stats" aria-label={label}>
+	{
+		items.map((item) => (
+			<div class={`case-stats-item case-stats-item-${item.accent}`}>
+				<dt class="case-stats-value">{item.value}</dt>
+				<dd class="case-stats-label">{item.label}</dd>
+			</div>
+		))
+	}
+</dl>
+
+<style>
+	.case-stats {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1.25rem;
+		margin: 1.5rem 0;
+		padding: 0;
+	}
+
+	.case-stats-item {
+		padding: 1.5rem 1.25rem;
+		border-radius: 1rem;
+		color: #171717;
+	}
+
+	.case-stats-item-teal {
+		background: var(--project-accent-teal);
+	}
+
+	.case-stats-item-purple {
+		background: var(--project-accent-purple);
+	}
+
+	.case-stats-item-blue {
+		background: var(--project-accent-blue);
+	}
+
+	.case-stats-item-lime {
+		background: var(--selection);
+	}
+
+	.case-stats-value {
+		margin: 0;
+		font-size: clamp(1.4rem, 3.2vw, 1.85rem);
+		font-weight: 800;
+		letter-spacing: -0.02em;
+		line-height: 1.15;
+	}
+
+	.case-stats-label {
+		margin: 0.5rem 0 0;
+		font-size: 0.85rem;
+		font-weight: 600;
+		line-height: 1.35;
+		color: rgba(23, 23, 23, 0.72);
+	}
+
+	@media (max-width: 720px) {
+		.case-stats {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>

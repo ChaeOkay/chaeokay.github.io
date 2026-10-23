@@ -13,8 +13,7 @@ externalUrl: "https://waverlyclassof2001.com"
 ---
 
 import { Image } from 'astro:assets';
-import CaseStudyFramework from '../../components/CaseStudyFramework.astro';
-import CaseStudyStakeholders from '../../components/CaseStudyStakeholders.astro';
+import CaseStudyStats from '../../components/CaseStudyStats.astro';
 import fbGroupMessage from '../../assets/case-studies/waverly-class-of-2001/fb-group-message.png';
 import siteAnnouncement from '../../assets/case-studies/waverly-class-of-2001/site-announcement.png';
 import fundraiser from '../../assets/case-studies/waverly-class-of-2001/fundraiser.png';
@@ -88,44 +87,14 @@ Participation more than doubled, rising from 10% of the class at our 10-year reu
 
 Looking back, organizing the reunion used the same muscles as building a product. Before committing, I looked for signs that people across different groups actually wanted it. I recruited for range, not just friendship. Free admission became a message about who the event was for. And my biggest lesson is one I'll bring to every team I lead. People show up when they know they matter.
 
-## Approach
+## By the Numbers
 
-<CaseStudyFramework
-	label="Strategy, goal, and tactic"
+<CaseStudyStats
+	label="Reunion results at a glance"
 	items={[
-		{
-			label: 'Strategy',
-			accent: 'purple',
-			paragraph: 'Validate demand across friend groups before committing time or money.',
-			paragraphSecondary:
-				"Interest from a single social circle isn't a signal worth building a reunion on; interest spanning several is.",
-		},
-		{
-			label: 'Goal',
-			accent: 'teal',
-			list: [
-				'Reach alumni across every friend group, not just the organizing team’s own circle.',
-				'Remove ticket price as a barrier without concentrating all the financial risk on attendees.',
-				'Convert interest into RSVPs by making people feel wanted, not just invited.',
-			],
-		},
-		{
-			label: 'Tactic',
-			accent: 'blue',
-			paragraph:
-				'Recruit a planning team for range, price the event as a belonging signal instead of a cover charge, and spend the final days reaching out person-by-person to the people most likely to stay home.',
-		},
-	]}
-/>
-
-## Stakeholders
-
-<CaseStudyStakeholders
-	label="Roles and stakeholders"
-	items={[
-		{ role: 'Organizer', stakeholder: 'Self, carrying the venue deposit risk', accent: 'teal' },
-		{ role: 'Planning team', stakeholder: 'Volunteers recruited across friend groups', accent: 'purple' },
-		{ role: 'Primary audience', stakeholder: "Waverly's graduating class of 2001", accent: 'blue' },
-		{ role: 'Venue partner', stakeholder: 'Refundable deposit, no ticket price', accent: 'lime' },
+		{ value: '10% → 21%', label: 'Turnout, more than doubled from our 10-year reunion', accent: 'purple' },
+		{ value: '35%', label: 'Of the graduating class joined the email list', accent: 'teal' },
+		{ value: '24 hours', label: 'To fully crowdfund the venue deposit', accent: 'blue' },
+		{ value: '1 day', label: 'To refund the deposit after the event', accent: 'lime' },
 	]}
 />
