@@ -270,6 +270,32 @@ const schema = [
 		margin: 0.4rem 0;
 	}
 
+	.case-study-content :global(figure) {
+		max-width: 22rem;
+		margin: 1.75rem auto 2.5rem;
+	}
+
+	.case-study-content :global(figure.case-image-wide) {
+		max-width: 100%;
+	}
+
+	.case-study-content :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 1rem;
+		border: 1px solid var(--image-border);
+		box-shadow: var(--shadow-soft);
+	}
+
+	.case-study-content :global(figcaption) {
+		margin: 0.6rem 0 0;
+		font-size: 0.85rem;
+		font-style: italic;
+		line-height: 1.4;
+		color: var(--muted-foreground);
+	}
+
 	.case-study-content :global(a) {
 		color: var(--accent-link);
 		text-decoration: underline;
