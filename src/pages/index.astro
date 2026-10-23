@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import { siteConfig } from '../config/site';
 import exceptionalStandardsScreenshot from '../assets/projects/exceptional-standards.png';
-import waverlyClassOf2001Screenshot from '../assets/projects/waverly-class-of-2001.png';
+import waverlyClassOf2001Screenshot from '../assets/case-studies/waverly-class-of-2001/fundraiser.png';
 import aavedLogo from '../assets/projects/aaved-logo.png';
 ---
 
@@ -78,32 +78,29 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 					<li>
 						<a
 							class="project-card project-card-purple"
-							href="https://waverlyclassof2001.com"
-							target="_blank"
-							rel="noopener noreferrer"
+							href="/case-studies/waverly-class-of-2001/"
 						>
 							<div class="project-meta">
 								<p class="project-name">Waverly Class of 2001</p>
 								<time class="project-date" datetime="2026-07">July 2026</time>
 							</div>
-							<h2 class="project-title"><span class="sr-only">Waverly Class of 2001: </span>Redefining the High School Reunion Experience.</h2>
-							<p class="project-stat">85+ attendees &middot; moving participation 10% to 35%</p>
+							<h2 class="project-title"><span class="sr-only">Waverly Class of 2001: </span>How Product Thinking Doubled Our Reunion Turnout</h2>
 							<div class="project-visual">
 								<Image
 									class="project-image"
 									src={waverlyClassOf2001Screenshot}
-									alt="Waverly Warriors Class of 2001 reunion landing page, with a refundable deposit goal of $420 and donation buttons"
-									width={640}
-									height={527}
+									alt="Waverly Warriors Class of 2001 fundraiser page showing a $420 refundable deposit goal, 6 donors, and 100% funded"
+									width={2076}
+									height={1600}
 								/>
 							</div>
 							<ul class="project-tags" aria-label="Project tags">
-								<li>Discovery</li>
 								<li>Team Building</li>
-								<li>Adoption</li>
-								<li>Stakeholder Insight</li>
+								<li>Leadership</li>
+								<li>Pricing</li>
+								<li>Inclusive Design</li>
 							</ul>
-							<span class="sr-only">View case study (opens in a new tab)</span>
+							<span class="sr-only">Read the case study</span>
 						</a>
 					</li>
 
@@ -361,15 +358,6 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 		line-height: 1.16;
 		letter-spacing: -0.03em;
 		color: #171717;
-	}
-
-	.project-stat {
-		display: flex;
-		align-items: center;
-		margin: 0;
-		font-size: 1rem;
-		font-weight: 600;
-		color: rgba(23, 23, 23, 0.72);
 	}
 
 	.project-visual {
