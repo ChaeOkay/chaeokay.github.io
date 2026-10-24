@@ -106,14 +106,14 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 
 					<li>
 						<a
-							class="project-card project-card-neutral"
+							class="project-card project-card-neutral project-card-coming-soon"
 							href="https://aaved.org"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<div class="project-meta">
 								<p class="project-name">AAVEd</p>
-								<time class="project-date" datetime="2026-08">August 2026</time>
+								<span class="project-badge">Case study coming soon</span>
 							</div>
 							<h2 class="project-title"><span class="sr-only">AAVEd: </span>Moving from passive agreement to repeatable participation.</h2>
 							<div class="project-visual project-visual-compact">
@@ -301,6 +301,29 @@ import aavedLogo from '../assets/projects/aaved-logo.png';
 
 	.project-card-neutral {
 		background: var(--project-accent-neutral);
+	}
+
+	.project-card-coming-soon {
+		opacity: 0.6;
+	}
+
+	.project-card-coming-soon:hover,
+	.project-card-coming-soon:focus-visible {
+		opacity: 0.8;
+	}
+
+	.project-badge {
+		flex: 0 0 auto;
+		padding: 0.2rem 0.6rem;
+		border-radius: 999px;
+		background: rgba(23, 23, 23, 0.1);
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: rgba(23, 23, 23, 0.72);
+		white-space: nowrap;
 	}
 
 	.project-name {
